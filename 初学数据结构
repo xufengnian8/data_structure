@@ -1,3 +1,6 @@
+//第一段数据结构代码,使用头插进行数据的导入,还有指定位置进行删除节点
+
+
 #include<stdio.h>
 #include<stdlib.h>
 
