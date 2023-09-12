@@ -1,0 +1,73 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct Node{
+    int data;
+    struct Node * next;
+}Node;
+
+struct Node* head;
+void Insert(int x)
+{
+    Node* temp = (Node*)malloc(sizeof(struct Node));
+    temp->data = x;
+    temp->next = head;
+    head = temp;
+}
+void Print()
+{
+    Node* temp = head;
+    printf("List is: ");
+    while(temp != NULL)
+    {
+        printf(" %d", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+void Delete(int n)
+{
+    Node* temp1 = head;
+    if(n ==1)
+    {
+        head = temp1->next;
+        free(temp1);
+    }
+    for(int i=0;i<n-2;i++)
+    {
+        temp1 = temp1->next;
+    }
+    Node* temp2 = temp1->next;
+    temp1->next = temp2->next;
+
+
+    free(temp2);
+}
+int main()
+{
+    head = NULL;
+//    printf("How many numbers?\n");
+//    int n,i,x;
+//    scanf("%d", &n);
+//    for(i=0;i<n;i++){
+//        printf("Enter the number \n");
+//        scanf("%d", &x);
+//        Insert(x);
+//        Print();
+//    }
+
+    Insert(2);
+    Insert(4);
+    Insert(5);
+    Insert(8);
+    Print();
+    int number;
+    printf("请输入要删除的位置\n");
+    scanf("%d", &number);
+    Delete(number);
+
+    Print();
+
+
+    return 0;
+}
